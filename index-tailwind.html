@@ -1,0 +1,1149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jevinik Restaurant - Authentic Calabar & Efik Cuisine in Wuse 2, Abuja. Premium dining, catering services, and VIP experiences. 4.1⭐ rated.">
+    <meta name="keywords" content="Calabar restaurant Abuja, Nigerian cuisine Wuse 2, catering services Abuja, fine dining, VIP dining">
+    <meta name="author" content="Jevinik Restaurant">
+    <meta property="og:title" content="Jevinik Restaurant | Authentic Calabar Cuisine">
+    <meta property="og:description" content="Premium Nigerian restaurant with digital queue management, catering services, and VIP dining experiences.">
+    <meta property="og:type" content="business.business">
+    <meta name="theme-color" content="#D4AF37">
+    
+    <title>Jevinik Restaurant | Authentic Calabar Cuisine in Wuse 2, Abuja</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --terracotta: #A0522D;
+            --brown: #3E2723;
+            --cream: #F5F1E8;
+            --dark-brown: #2C1810;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-brown);
+        }
+        
+        .brand-gold { color: var(--gold); }
+        .bg-brand-gold { background-color: var(--gold); }
+        .border-brand-gold { border-color: var(--gold); }
+        .hover-gold:hover { color: var(--gold); }
+        
+        .brand-terracotta { color: var(--terracotta); }
+        .bg-brand-terracotta { background-color: var(--terracotta); }
+        
+        .brand-brown { color: var(--brown); }
+        .bg-brand-brown { background-color: var(--brown); }
+        
+        .bg-brand-cream { background-color: var(--cream); }
+        
+        /* Premium aesthetic */
+        .premium-font {
+            font-family: 'Georgia', serif;
+            letter-spacing: 0.05em;
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.1), rgba(160, 82, 45, 0.1)), 
+                        url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 600"><defs><pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="%23D4AF37" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="1200" height="600" fill="%23F5F1E8"/><rect width="1200" height="600" fill="url(%23grid)"/></svg>');
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, var(--gold), transparent);
+            opacity: 0.1;
+            border-radius: 50%;
+            top: -100px;
+            right: -100px;
+        }
+        
+        .section-title {
+            font-family: 'Georgia', serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--dark-brown);
+            letter-spacing: 0.05em;
+        }
+        
+        .section-subtitle {
+            color: var(--terracotta);
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        
+        .btn-primary {
+            background: linear-gradient(135deg, var(--gold), #C4A029);
+            color: var(--dark-brown);
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+            font-weight: 600;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.3);
+        }
+        
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+        
+        .btn-secondary:hover {
+            background: var(--gold);
+            color: var(--dark-brown);
+        }
+        
+        .card-premium {
+            background: var(--cream);
+            border-left: 5px solid var(--gold);
+            transition: all 0.3s ease;
+        }
+        
+        .card-premium:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border-left-color: var(--terracotta);
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--cream), rgba(245, 241, 232, 0.95));
+            border-bottom: 2px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-brand {
+            font-family: 'Georgia', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            background: none;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .menu-toggle span {
+            width: 25px;
+            height: 3px;
+            background: var(--brown);
+            border-radius: 2px;
+            transition: all 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .nav-menu {
+                position: absolute;
+                top: 100%;
+                left: 0;
+                right: 0;
+                background: var(--cream);
+                flex-direction: column;
+                gap: 0;
+                border-bottom: 2px solid var(--gold);
+                display: none;
+                border-radius: 0;
+            }
+            
+            .nav-menu.active {
+                display: flex;
+            }
+            
+            .nav-menu li {
+                border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+                padding: 0;
+            }
+            
+            .nav-menu li:last-child {
+                border-bottom: none;
+            }
+            
+            .nav-menu li a {
+                display: block;
+                padding: 0.75rem 1.5rem;
+            }
+        }
+        
+        .form-input {
+            border: 2px solid var(--cream);
+            border-radius: 8px;
+            padding: 0.75rem;
+            transition: all 0.3s ease;
+            background: white;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--gold);
+            box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.1);
+        }
+        
+        .floating-whatsapp {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            width: 60px;
+            height: 60px;
+            background: #25D366;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+            z-index: 999;
+            animation: bounce 2s infinite;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .floating-whatsapp:hover {
+            transform: scale(1.1);
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .menu-item-card {
+            background: white;
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+        
+        .menu-item-card:hover {
+            border-color: var(--gold);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.15);
+        }
+        
+        .menu-item-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(135deg, #E8D5C4, #D4C4B0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--terracotta);
+            font-size: 3rem;
+        }
+        
+        .portion-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark-brown);
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            margin-top: 0.5rem;
+        }
+        
+        .spice-level {
+            color: #E74C3C;
+            font-weight: 600;
+        }
+        
+        .success-message {
+            background: #D4EDDA;
+            border-left: 4px solid #28A745;
+            color: #155724;
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+            display: none;
+        }
+        
+        .success-message.show {
+            display: block;
+        }
+        
+        .footer {
+            background: var(--brown);
+            color: var(--cream);
+            border-top: 2px solid var(--gold);
+        }
+        
+        .footer a {
+            color: var(--gold);
+            transition: color 0.3s ease;
+        }
+        
+        .footer a:hover {
+            color: var(--terracotta);
+        }
+    </style>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "Restaurant",
+        "name": "Jevinik Restaurant",
+        "image": "https://jevinikrestaurant.com/images/hero.jpg",
+        "description": "Authentic Calabar & Efik cuisine restaurant in Wuse 2, Abuja. Specializing in traditional Nigerian food, bulk catering, and VIP dining experiences.",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "494 Bangui Street",
+            "addressLocality": "Wuse 2",
+            "addressRegion": "Abuja",
+            "postalCode": "900001",
+            "addressCountry": "NG"
+        },
+        "telephone": "+2348057828087",
+        "url": "https://jevinikrestaurant.com",
+        "openingHoursSpecification": [
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+                "opens": "10:00",
+                "closes": "22:00"
+            },
+            {
+                "@type": "OpeningHoursSpecification",
+                "dayOfWeek": ["Saturday", "Sunday"],
+                "opens": "11:00",
+                "closes": "23:00"
+            }
+        ],
+        "servesCuisine": ["Nigerian", "Calabar cuisine", "Efik cuisine"],
+        "aggregateRating": {
+            "@type": "AggregateRating",
+            "ratingValue": "4.1",
+            "ratingCount": "187"
+        },
+        "priceRange": "₦₦",
+        "sameAs": [
+            "https://www.google.com/maps/place/Jevinik+Restaurant",
+            "https://www.instagram.com/jevinikrestaurant"
+        ]
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "LocalBusiness",
+        "name": "Jevinik Restaurant",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "494 Bangui Street",
+            "addressLocality": "Wuse 2",
+            "addressRegion": "Abuja",
+            "addressCountry": "NG"
+        },
+        "areaServed": "Abuja",
+        "telephone": "+2348057828087",
+        "currenciesAccepted": "NGN",
+        "priceRange": "₦₦"
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org/",
+        "@type": "FAQPage",
+        "mainEntity": [
+            {
+                "@type": "Question",
+                "name": "How can I check the restaurant's wait time?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Visit our Queue Status section to see real-time wait times and table availability. You can also reserve a table online."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Do you offer catering services?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Yes! We offer catering for small gatherings (10-25), corporate events (25-100), and premium packages (100+). Contact us for a quote."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "What is your VIP dining experience like?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Our VIP dining includes private lounge access, personalized menus, dedicated servers, and premium ambiance for special occasions."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "How do I order via WhatsApp?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Click the green WhatsApp button on our website to view our menu and place orders directly through WhatsApp messaging."
+                }
+            }
+        ]
+    }
+    </script>
+</head>
+<body class="bg-brand-cream">
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="nav-brand">
+                    <i class="fas fa-utensils"></i>
+                    <span>Jevinik</span>
+                </div>
+                <button class="menu-toggle" id="menuToggle" aria-label="Toggle menu">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+                <ul class="hidden md:flex nav-menu gap-8 items-center">
+                    <li><a href="#home" class="text-brand-brown hover:brand-gold transition font-semibold">Home</a></li>
+                    <li><a href="#menu" class="text-brand-brown hover:brand-gold transition font-semibold">Menu</a></li>
+                    <li><a href="#queue" class="text-brand-brown hover:brand-gold transition font-semibold">Queue</a></li>
+                    <li><a href="#delivery" class="text-brand-brown hover:brand-gold transition font-semibold">Delivery</a></li>
+                    <li><a href="#catering" class="text-brand-brown hover:brand-gold transition font-semibold">Catering</a></li>
+                    <li><a href="#vip" class="text-brand-brown hover:brand-gold transition font-semibold">VIP</a></li>
+                    <li><a href="deliveries.html" class="text-brand-brown hover:brand-gold transition font-semibold flex items-center gap-1"><i class="fas fa-truck"></i> Orders</a></li>
+                    <li><a href="#contact" class="text-brand-brown hover:brand-gold transition font-semibold">Contact</a></li>
+                </ul>
+            </div>
+            <ul class="nav-menu md:hidden flex-col gap-0 rounded-b-lg border-t-0" id="navMenu">
+                <li class="border-b border-gold border-opacity-20"><a href="#home" class="block px-4 py-3 text-brand-brown font-semibold">Home</a></li>
+                <li class="border-b border-gold border-opacity-20"><a href="#menu" class="block px-4 py-3 text-brand-brown font-semibold">Menu</a></li>
+                <li class="border-b border-gold border-opacity-20"><a href="#queue" class="block px-4 py-3 text-brand-brown font-semibold">Queue</a></li>
+                <li class="border-b border-gold border-opacity-20"><a href="#delivery" class="block px-4 py-3 text-brand-brown font-semibold">Delivery</a></li>
+                <li class="border-b border-gold border-opacity-20"><a href="#catering" class="block px-4 py-3 text-brand-brown font-semibold">Catering</a></li>
+                <li class="border-b border-gold border-opacity-20"><a href="#vip" class="block px-4 py-3 text-brand-brown font-semibold">VIP</a></li>
+                <li class="border-b border-gold border-opacity-20"><a href="deliveries.html" class="block px-4 py-3 text-brand-brown font-semibold"><i class="fas fa-truck mr-2"></i>Orders</a></li>
+                <li><a href="#contact" class="block px-4 py-3 text-brand-brown font-semibold">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero py-20 md:py-32 relative">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center">
+                <div class="mb-8">
+                    <span class="inline-block bg-gold bg-opacity-20 text-terracotta px-4 py-2 rounded-full font-semibold text-sm">⭐ 4.1 Rated - Abuja's Premier Choice</span>
+                </div>
+                <h1 class="section-title mb-4 text-4xl md:text-5xl">Jevinik Restaurant</h1>
+                <p class="text-xl md:text-2xl text-terracotta mb-8 font-light">Authentic Calabar & Efik Cuisine Experience</p>
+                <p class="text-lg text-dark-brown max-w-2xl mx-auto mb-12">Experience traditional Nigerian flavors served with modern convenience. Digital queue management, premium catering, and unforgettable VIP dining.</p>
+                
+                <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                    <button class="btn-primary px-8 py-3 rounded-lg flex items-center justify-center gap-2 text-lg" onclick="document.getElementById('queue').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-calendar"></i> Check Queue Status
+                    </button>
+                    <button class="btn-secondary px-8 py-3 rounded-lg flex items-center justify-center gap-2 text-lg" onclick="document.getElementById('menu').scrollIntoView({behavior: 'smooth'})">
+                        <i class="fas fa-book"></i> View Menu
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Queue Management Section -->
+    <section id="queue" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title mb-4">Digital Queue Management</h2>
+                <p class="section-subtitle">Skip the hassle - Reserve your table online and know exactly when you'll be seated</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="card-premium p-8 rounded-lg text-center">
+                    <i class="fas fa-hourglass-end text-4xl brand-gold mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Current Wait Time</h3>
+                    <div class="text-4xl font-bold brand-terracotta" id="waitTime">15 mins</div>
+                    <p class="text-gray-600 mt-2">Estimated</p>
+                </div>
+                <div class="card-premium p-8 rounded-lg text-center">
+                    <i class="fas fa-users text-4xl brand-gold mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Queue Position</h3>
+                    <div class="text-4xl font-bold brand-terracotta" id="queueCount">8</div>
+                    <p class="text-gray-600 mt-2">Parties ahead</p>
+                </div>
+                <div class="card-premium p-8 rounded-lg text-center">
+                    <i class="fas fa-chair text-4xl brand-gold mb-4"></i>
+                    <h3 class="text-xl font-bold mb-2">Tables Available</h3>
+                    <div class="text-4xl font-bold brand-terracotta" id="tablesAvailable">3</div>
+                    <p class="text-gray-600 mt-2">Ready now</p>
+                </div>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <form class="space-y-6" id="reservationForm">
+                    <h3 class="text-2xl font-bold text-dark-brown">Make a Reservation</h3>
+                    <div>
+                        <label class="block text-dark-brown font-semibold mb-2">Name *</label>
+                        <input type="text" id="name" class="form-input w-full" required>
+                    </div>
+                    <div>
+                        <label class="block text-dark-brown font-semibold mb-2">Phone Number *</label>
+                        <input type="tel" id="phone" placeholder="+234 80X XXX XXXX" class="form-input w-full" required>
+                    </div>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Guests *</label>
+                            <select id="guests" class="form-input w-full" required>
+                                <option value="">Select...</option>
+                                <option value="1">1 Guest</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5+">5+ Guests</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Time *</label>
+                            <input type="time" id="time" class="form-input w-full" required>
+                        </div>
+                    </div>
+                    <div>
+                        <label class="block text-dark-brown font-semibold mb-2">Dining Type *</label>
+                        <select id="dining-type" class="form-input w-full" required>
+                            <option value="">Select...</option>
+                            <option value="regular">Regular Dining</option>
+                            <option value="vip">VIP Dining</option>
+                            <option value="group">Group Celebration</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn-primary w-full py-3 rounded-lg font-bold text-lg">Confirm Reservation</button>
+                    <div class="success-message" id="reservationSuccess">
+                        <i class="fas fa-check-circle mr-2"></i> Reservation submitted! We'll confirm via WhatsApp shortly.
+                    </div>
+                </form>
+
+                <div class="bg-brand-terracotta bg-opacity-10 p-8 rounded-lg border-l-4 border-terracotta">
+                    <h3 class="text-2xl font-bold text-dark-brown mb-6">Why Reserve Online?</h3>
+                    <ul class="space-y-4">
+                        <li class="flex gap-4">
+                            <i class="fas fa-check-circle text-gold text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-dark-brown">Save Time</h4>
+                                <p class="text-gray-700">No more waiting in queues</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <i class="fas fa-check-circle text-gold text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-dark-brown">Know Your Wait</h4>
+                                <p class="text-gray-700">Real-time status updates</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <i class="fas fa-check-circle text-gold text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-dark-brown">Guaranteed Seating</h4>
+                                <p class="text-gray-700">Your table is reserved</p>
+                            </div>
+                        </li>
+                        <li class="flex gap-4">
+                            <i class="fas fa-check-circle text-gold text-xl mt-1"></i>
+                            <div>
+                                <h4 class="font-bold text-dark-brown">SMS Confirmation</h4>
+                                <p class="text-gray-700">Instant notification</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Digital Menu Section -->
+    <section id="menu" class="py-20 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title mb-4">Our Menu</h2>
+                <p class="section-subtitle text-lg">Traditional Calabar & Efik Delicacies with Portion Guides</p>
+            </div>
+
+            <!-- Filter Buttons -->
+            <div class="flex flex-wrap gap-3 justify-center mb-12">
+                <button class="filter-btn active px-6 py-2 rounded-full bg-gold text-dark-brown font-bold transition" data-filter="all">All Dishes</button>
+                <button class="filter-btn px-6 py-2 rounded-full border-2 border-gold text-gold hover:bg-gold hover:text-dark-brown font-bold transition" data-filter="mains">Mains</button>
+                <button class="filter-btn px-6 py-2 rounded-full border-2 border-gold text-gold hover:bg-gold hover:text-dark-brown font-bold transition" data-filter="soups">Soups</button>
+                <button class="filter-btn px-6 py-2 rounded-full border-2 border-gold text-gold hover:bg-gold hover:text-dark-brown font-bold transition" data-filter="sides">Sides</button>
+                <button class="filter-btn px-6 py-2 rounded-full border-2 border-gold text-gold hover:bg-gold hover:text-dark-brown font-bold transition" data-filter="drinks">Drinks</button>
+            </div>
+
+            <!-- Menu Grid -->
+            <div class="grid md:grid-cols-3 gap-8" id="menuGrid">
+                <!-- Menu items populated by JavaScript -->
+            </div>
+
+            <!-- CTA for WhatsApp Orders -->
+            <div class="mt-16 bg-gradient-to-r from-gold to-terracotta p-12 rounded-lg text-center">
+                <h3 class="text-3xl font-bold text-dark-brown mb-4">Ready to Order?</h3>
+                <p class="text-dark-brown text-lg mb-8 max-w-2xl mx-auto">Send your custom order directly through WhatsApp for instant confirmation and delivery.</p>
+                <a href="https://wa.me/2348057828087?text=Hi%20Jevinik!%20I%27d%20like%20to%20place%20an%20order.%20Please%20share%20available%20options." target="_blank" class="inline-flex items-center gap-2 bg-dark-brown text-white px-8 py-4 rounded-lg font-bold hover:bg-opacity-90 transition">
+                    <i class="fab fa-whatsapp text-2xl"></i> Order on WhatsApp
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Catering Section -->
+    <section id="catering" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title mb-4">Bulk Catering Services</h2>
+                <p class="section-subtitle text-lg">Perfect for corporate events, weddings, and celebrations</p>
+            </div>
+
+            <!-- Service Tiers -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="card-premium p-8 rounded-lg">
+                    <div class="w-16 h-16 bg-gold bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-users text-3xl brand-gold"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark-brown text-center mb-2">Small Gatherings</h3>
+                    <p class="text-terracotta text-center mb-6">10-25 people</p>
+                    <ul class="space-y-3 text-gray-700 mb-8">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>Custom menu selection</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>Delivery & setup included</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>4-hour notice required</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>Starting from ₦150,000</span></li>
+                    </ul>
+                </div>
+
+                <div class="card-premium p-8 rounded-lg border-2 border-gold">
+                    <div class="w-16 h-16 bg-gold bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-building text-3xl brand-gold"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark-brown text-center mb-2">Corporate Events</h3>
+                    <p class="text-terracotta text-center mb-6">25-100 people</p>
+                    <ul class="space-y-3 text-gray-700 mb-8">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>Menu consultation</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>Professional setup & service</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>24-hour notice</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>Custom packages available</span></li>
+                    </ul>
+                </div>
+
+                <div class="card-premium p-8 rounded-lg">
+                    <div class="w-16 h-16 bg-gold bg-opacity-20 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <i class="fas fa-champagne-glasses text-3xl brand-gold"></i>
+                    </div>
+                    <h3 class="text-2xl font-bold text-dark-brown text-center mb-2">Premium Packages</h3>
+                    <p class="text-terracotta text-center mb-6">100+ people</p>
+                    <ul class="space-y-3 text-gray-700 mb-8">
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>Full event planning</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>Professional servers included</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>Custom menu creation</span></li>
+                        <li class="flex items-start gap-2"><i class="fas fa-check text-gold mt-1"></i> <span>Dedicated event manager</span></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Catering Form -->
+            <div class="bg-brand-cream p-12 rounded-lg">
+                <form id="cateringForm" class="space-y-6">
+                    <h3 class="text-2xl font-bold text-dark-brown mb-8">Request a Catering Quote</h3>
+                    
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Event Name/Type *</label>
+                            <input type="text" id="cater-name" class="form-input w-full" required>
+                        </div>
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Contact Person *</label>
+                            <input type="text" id="cater-contact" class="form-input w-full" required>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Phone Number *</label>
+                            <input type="tel" id="cater-phone" placeholder="+234 80X XXX XXXX" class="form-input w-full" required>
+                        </div>
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Number of Guests *</label>
+                            <input type="number" id="cater-guests" min="10" placeholder="50" class="form-input w-full" required>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Event Date *</label>
+                            <input type="date" id="cater-date" class="form-input w-full" required>
+                        </div>
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Preferred Service Type</label>
+                            <select id="cater-service" class="form-input w-full">
+                                <option value="delivery">Delivery Only</option>
+                                <option value="full-service">Full Service (Setup & Servers)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-dark-brown font-semibold mb-2">Special Requirements</label>
+                        <textarea id="cater-message" rows="4" placeholder="Dietary restrictions, preferences, etc." class="form-input w-full resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary px-8 py-3 rounded-lg font-bold text-lg">Get Quote</button>
+                    <div class="success-message" id="cateringSuccess">
+                        <i class="fas fa-check-circle mr-2"></i> Quote request received! We'll contact you within 2 hours.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- VIP Dining Section -->
+    <section id="vip" class="py-20 bg-gradient-to-r from-terracotta to-brown p-12 rounded-lg text-brand-brown text-center">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl md:text-5xl font-bold mb-4 premium-font text-brand-brown">VIP Dining Experience</h2>
+                <p class="text-xl text-brand-brown">Exclusive ambiance for your most special occasions</p>
+            </div>
+
+            <!-- VIP Features Grid -->
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm hover:bg-opacity-20 transition">
+                    <i class="fas fa-star text-4xl mb-4 text-brand-brown"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-brand-brown">Private Lounge Access</h3>
+                    <p class="text-brand-brown">Dedicated VIP lounge with enhanced privacy and premium ambiance away from the main dining area.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm hover:bg-opacity-20 transition">
+                    <i class="fas fa-utensils text-4xl mb-4 text-brand-brown"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-brand-brown">Personalized Menus</h3>
+                    <p class="text-brand-brown">Custom-crafted dishes tailored to your preferences, dietary requirements, and culinary desires.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm hover:bg-opacity-20 transition">
+                    <i class="fas fa-concierge-bell text-4xl mb-4 text-brand-brown"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-brand-brown">Dedicated Server</h3>
+                    <p class="text-brand-brown">Personal attention from our senior staff throughout your entire dining experience.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm hover:bg-opacity-20 transition">
+                    <i class="fas fa-music text-4xl mb-4 text-brand-brown"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-brand-brown">Curated Soundscape</h3>
+                    <p class="text-brand-brown">Enjoy handpicked African music and ambient sounds in a peaceful, upscale setting.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm hover:bg-opacity-20 transition">
+                    <i class="fas fa-clock text-4xl mb-4 text-brand-brown"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-brand-brown">Extended Hours</h3>
+                    <p class="text-brand-brown">Available for private bookings and special events beyond our regular operating hours.</p>
+                </div>
+                <div class="bg-white bg-opacity-10 p-8 rounded-lg backdrop-blur-sm hover:bg-opacity-20 transition">
+                    <i class="fas fa-camera text-4xl mb-4 text-brand-brown"></i>
+                    <h3 class="text-2xl font-bold mb-3 text-brand-brown">Premium Photography</h3>
+                    <p class="text-brand-brown">Picture-perfect setting ideal for celebrations, anniversaries, and special milestone moments.</p>
+                </div>
+            </div>
+
+            <!-- VIP Booking Form -->
+            <div class="bg-brand-cream text-dark-brown p-12 rounded-lg">
+                <form id="vipForm" class="space-y-6">
+                    <h3 class="text-2xl font-bold mb-8">Reserve Your VIP Experience</h3>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Your Name *</label>
+                            <input type="text" id="vip-name" class="form-input w-full" required>
+                        </div>
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Phone Number *</label>
+                            <input type="tel" id="vip-phone" placeholder="+234 80X XXX XXXX" class="form-input w-full" required>
+                        </div>
+                    </div>
+
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Preferred Date *</label>
+                            <input type="date" id="vip-date" class="form-input w-full" required>
+                        </div>
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Number of Guests *</label>
+                            <select id="vip-guests" class="form-input w-full" required>
+                                <option value="">Select...</option>
+                                <option value="2">2 Guests</option>
+                                <option value="3">3 Guests</option>
+                                <option value="4">4 Guests</option>
+                                <option value="5">5 Guests</option>
+                                <option value="6-10">6-10 Guests</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div>
+                        <label class="block text-dark-brown font-semibold mb-2">Occasion *</label>
+                        <input type="text" id="vip-occasion" placeholder="e.g., Anniversary, Birthday, Proposal" class="form-input w-full" required>
+                    </div>
+
+                    <div>
+                        <label class="block text-dark-brown font-semibold mb-2">Special Requests</label>
+                        <textarea id="vip-requests" rows="3" placeholder="Dietary preferences, decorations, etc." class="form-input w-full resize-none"></textarea>
+                    </div>
+
+                    <button type="submit" class="btn-primary w-full py-3 rounded-lg font-bold text-lg">Book VIP Experience</button>
+                    <div class="success-message" id="vipSuccess">
+                        <i class="fas fa-check-circle mr-2"></i> VIP booking request submitted! We'll confirm via WhatsApp.
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Online Delivery Section -->
+    <section id="delivery" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title mb-4">Online Delivery</h2>
+                <p class="section-subtitle text-lg">Order from our menu and have delicious food delivered to your doorstep</p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-12">
+                <!-- Order Form -->
+                <div class="bg-brand-cream p-8 rounded-lg">
+                    <form id="deliveryForm" class="space-y-6">
+                        <h3 class="text-2xl font-bold text-dark-brown mb-8">Place Your Delivery Order</h3>
+
+                        <!-- Select Menu Items -->
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-4">Select Items *</label>
+                            <div class="space-y-3 max-h-48 overflow-y-auto border-2 border-gold border-opacity-20 rounded-lg p-4">
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="item1" value="Edikang Ikong" class="delivery-item" data-price="4000">
+                                    <label for="item1" class="text-dark-brown">Edikang Ikong - ₦4,000</label>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="item2" value="Pepper Soup (Goat)" class="delivery-item" data-price="5000">
+                                    <label for="item2" class="text-dark-brown">Pepper Soup (Goat) - ₦5,000</label>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="item3" value="Jollof Rice & Grilled Fish" class="delivery-item" data-price="4500">
+                                    <label for="item3" class="text-dark-brown">Jollof Rice & Grilled Fish - ₦4,500</label>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="item4" value="Creamy Egusi Soup" class="delivery-item" data-price="3500">
+                                    <label for="item4" class="text-dark-brown">Creamy Egusi Soup - ₦3,500</label>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="item5" value="Ofe Owerri" class="delivery-item" data-price="3800">
+                                    <label for="item5" class="text-dark-brown">Ofe Owerri - ₦3,800</label>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="item6" value="Rice & Stew" class="delivery-item" data-price="2500">
+                                    <label for="item6" class="text-dark-brown">Rice & Stew - ₦2,500</label>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="item7" value="Fried Rice & Chicken" class="delivery-item" data-price="4000">
+                                    <label for="item7" class="text-dark-brown">Fried Rice & Chicken - ₦4,000</label>
+                                </div>
+                                <div class="flex items-center gap-3">
+                                    <input type="checkbox" id="item8" value="Fresh Orange Juice" class="delivery-item" data-price="800">
+                                    <label for="item8" class="text-dark-brown">Fresh Orange Juice - ₦800</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Customer Info -->
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Full Name *</label>
+                            <input type="text" id="delivery-name" class="form-input w-full" required>
+                        </div>
+
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Phone Number *</label>
+                            <input type="tel" id="delivery-phone" placeholder="+234 80X XXX XXXX" class="form-input w-full" required>
+                        </div>
+
+                        <!-- Delivery Location -->
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Delivery Location *</label>
+                            <textarea id="delivery-location" rows="3" placeholder="Street address, apartment, directions..." class="form-input w-full resize-none" required></textarea>
+                        </div>
+
+                        <!-- Total Price Display -->
+                        <div class="bg-gold bg-opacity-10 p-4 rounded-lg border-2 border-gold border-opacity-30">
+                            <div class="flex justify-between items-center">
+                                <span class="text-dark-brown font-bold text-lg">Total Amount:</span>
+                                <span class="text-3xl font-bold brand-gold" id="totalPrice">₦0</span>
+                            </div>
+                        </div>
+
+                        <!-- Payment Method -->
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Payment Method *</label>
+                            <select id="payment-method" class="form-input w-full" required>
+                                <option value="">Select payment method</option>
+                                <option value="cash">Cash on Delivery</option>
+                                <option value="transfer">Bank Transfer</option>
+                                <option value="card">Credit/Debit Card</option>
+                            </select>
+                        </div>
+
+                        <!-- Special Instructions -->
+                        <div>
+                            <label class="block text-dark-brown font-semibold mb-2">Special Instructions</label>
+                            <textarea id="delivery-notes" rows="2" placeholder="Any special requests or dietary needs..." class="form-input w-full resize-none"></textarea>
+                        </div>
+
+                        <button type="submit" class="btn-primary w-full py-3 rounded-lg font-bold text-lg">Place Order</button>
+                        <div class="success-message" id="deliverySuccess">
+                            <i class="fas fa-check-circle mr-2"></i> Order placed successfully! You'll receive a WhatsApp confirmation shortly.
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Order Info Panel -->
+                <div>
+                    <div class="bg-gradient-to-br from-gold to-terracotta p-8 rounded-lg text-white mb-8">
+                        <h3 class="text-2xl font-bold mb-6">Why Order for Delivery?</h3>
+                        <ul class="space-y-4">
+                            <li class="flex gap-4">
+                                <i class="fas fa-check-circle text-2xl"></i>
+                                <div>
+                                    <h4 class="font-bold mb-1">Fast & Reliable</h4>
+                                    <p class="text-sm">30-45 minute delivery within Wuse 2</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <i class="fas fa-check-circle text-2xl"></i>
+                                <div>
+                                    <h4 class="font-bold mb-1">Hot & Fresh</h4>
+                                    <p class="text-sm">Prepared fresh to order, delivered hot</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <i class="fas fa-check-circle text-2xl"></i>
+                                <div>
+                                    <h4 class="font-bold mb-1">No Delivery Fee</h4>
+                                    <p class="text-sm">Free delivery for orders over ₦10,000</p>
+                                </div>
+                            </li>
+                            <li class="flex gap-4">
+                                <i class="fas fa-check-circle text-2xl"></i>
+                                <div>
+                                    <h4 class="font-bold mb-1">Multiple Payment Options</h4>
+                                    <p class="text-sm">Cash, transfer, or card at your convenience</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <div class="bg-brand-cream p-6 rounded-lg border-l-4 border-gold">
+                        <h4 class="font-bold text-dark-brown mb-4">📍 Delivery Coverage</h4>
+                        <p class="text-gray-700 mb-4">We deliver to all areas within Wuse 2 and surrounding neighborhoods.</p>
+                        <p class="text-sm text-gray-600"><i class="fas fa-info-circle mr-2"></i>For orders outside our coverage area, please call us at +234 805 782 8087</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="section-title mb-6">About Jevinik</h2>
+                    <p class="text-gray-700 text-lg mb-4">
+                        Established as a premier destination for authentic Calabar and Efik cuisine, Jevinik Restaurant brings the rich culinary traditions of the Niger Delta to the heart of Abuja. We celebrate traditional preparation methods combined with premium ingredients sourced from trusted suppliers.
+                    </p>
+                    <p class="text-gray-700 text-lg mb-6">
+                        With consistently high ratings (4.1⭐) and years of dedicated service, we've become the trusted choice for families, business professionals, and celebration seekers across Abuja. Whether you're seeking an intimate dinner, a bustling feast, or enterprise-level catering, Jevinik delivers excellence.
+                    </p>
+                    <div class="flex gap-8">
+                        <div>
+                            <p class="text-3xl font-bold brand-gold">4.1★</p>
+                            <p class="text-gray-600">Rating</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold brand-gold">187+</p>
+                            <p class="text-gray-600">Reviews</p>
+                        </div>
+                        <div>
+                            <p class="text-3xl font-bold brand-gold">500+</p>
+                            <p class="text-gray-600">Events</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="bg-gradient-to-br from-gold to-terracotta p-8 rounded-lg h-96 flex items-center justify-center">
+                    <div class="text-center text-dark-brown">
+                        <i class="fas fa-image text-6xl mb-4 opacity-30"></i>
+                        <p class="font-bold">Restaurant Image</p>
+                        <p class="text-sm opacity-75">High-res photography coming soon</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="py-20 bg-brand-cream">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="section-title mb-4">Get in Touch</h2>
+                <p class="section-subtitle text-lg">We'd love to hear from you and make your next experience unforgettable</p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8 mb-16">
+                <div class="card-premium p-8 rounded-lg text-center">
+                    <i class="fas fa-phone text-4xl brand-gold mb-4"></i>
+                    <h3 class="text-xl font-bold text-dark-brown mb-3">Call Us</h3>
+                    <a href="tel:+2348057828087" class="text-terracotta font-semibold hover:text-gold transition text-lg">
+                        +234 805 782 8087
+                    </a>
+                    <p class="text-gray-600 mt-2">Available 10 AM - 10 PM daily</p>
+                </div>
+                <div class="card-premium p-8 rounded-lg text-center">
+                    <i class="fas fa-map-marker-alt text-4xl brand-gold mb-4"></i>
+                    <h3 class="text-xl font-bold text-dark-brown mb-3">Visit Us</h3>
+                    <p class="text-dark-brown font-semibold">494 Bangui Street</p>
+                    <p class="text-dark-brown font-semibold">Wuse 2, Abuja</p>
+                    <p class="text-gray-600 mt-2">Directions available on Google Maps</p>
+                </div>
+                <div class="card-premium p-8 rounded-lg text-center">
+                    <i class="fas fa-clock text-4xl brand-gold mb-4"></i>
+                    <h3 class="text-xl font-bold text-dark-brown mb-3">Hours</h3>
+                    <p class="text-dark-brown font-semibold">Mon-Fri: 10 AM - 10 PM</p>
+                    <p class="text-dark-brown font-semibold">Sat-Sun: 11 AM - 11 PM</p>
+                    <p class="text-gray-600 mt-2">Closed on select holidays</p>
+                </div>
+            </div>
+
+            <!-- Contact Form & Map -->
+            <div class="grid md:grid-cols-2 gap-12">
+                <form id="contactForm" class="space-y-6">
+                    <h3 class="text-2xl font-bold text-dark-brown">Send us a Message</h3>
+                    <div>
+                        <label class="block text-dark-brown font-semibold mb-2">Name *</label>
+                        <input type="text" id="contact-name" class="form-input w-full" required>
+                    </div>
+                    <div>
+                        <label class="block text-dark-brown font-semibold mb-2">Email *</label>
+                        <input type="email" id="contact-email" class="form-input w-full" required>
+                    </div>
+                    <div>
+                        <label class="block text-dark-brown font-semibold mb-2">Subject *</label>
+                        <input type="text" id="contact-subject" class="form-input w-full" required>
+                    </div>
+                    <div>
+                        <label class="block text-dark-brown font-semibold mb-2">Message *</label>
+                        <textarea id="contact-message" rows="5" class="form-input w-full resize-none" required></textarea>
+                    </div>
+                    <button type="submit" class="btn-primary px-8 py-3 rounded-lg font-bold">Send Message</button>
+                    <div class="success-message" id="contactSuccess">
+                        <i class="fas fa-check-circle mr-2"></i> Message sent successfully! We'll respond within 2 hours.
+                    </div>
+                </form>
+
+                <div>
+                    <h3 class="text-2xl font-bold text-dark-brown mb-6">Find Us on the Map</h3>
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3939.5589894559547!2d3.114533!3d9.069046!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x104b5e1e5e5e5e5d%3A0x5e5e5e5e5e5e5e!2s494%20Bangui%20Street%2C%20Wuse%202%2C%20Abuja!5e0!3m2!1sen!2sng!4v1234567890" width="100%" height="400" style="border:none; border-radius: 8px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    <div class="mt-6 bg-gold bg-opacity-20 p-6 rounded-lg border-l-4 border-gold">
+                        <h4 class="font-bold text-dark-brown mb-3">🚗 Directions & Parking</h4>
+                        <p class="text-gray-700">We're located in Wuse 2, minutes from major thoroughfares. Ample parking available. Use Google Maps for real-time directions.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Newsletter Signup -->
+            <div class="mt-16 bg-gradient-to-r from-terracotta to-brown p-12 rounded-lg text-brand-brown text-center">
+                <h3 class="text-3xl font-bold mb-4">Stay Updated</h3>
+                <p class="text-lg mb-8 text-brand-brown">Get weekly specials, event invitations, and dining tips straight to your inbox</p>
+                <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" placeholder="Your email" class="flex-1 px-4 py-3 rounded-lg text-dark-brown" required>
+                    <button type="submit" class="bg-gold text-dark-brown px-8 py-3 rounded-lg font-bold hover:bg-opacity-90 transition">Subscribe</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-12 border-t-4 border-gold">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-12 mb-12">
+                <div>
+                    <div class="nav-brand mb-4">
+                        <i class="fas fa-utensils"></i>
+                        <span>Jevinik</span>
+                    </div>
+                    <p class="text-gray-300">Premium Calabar & Efik cuisine in the heart of Abuja. Your destination for authentic Nigerian dining.</p>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gold mb-4">Quick Links</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#menu" class="hover:text-gold transition">Menu</a></li>
+                        <li><a href="#queue" class="hover:text-gold transition">Reservations</a></li>
+                        <li><a href="#catering" class="hover:text-gold transition">Catering</a></li>
+                        <li><a href="#vip" class="hover:text-gold transition">VIP Dining</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gold mb-4">Services</h4>
+                    <ul class="space-y-2 text-gray-300">
+                        <li><a href="#menu" class="hover:text-gold transition">Dine-In</a></li>
+                        <li><a href="#catering" class="hover:text-gold transition">Catering</a></li>
+                        <li><a href="#vip" class="hover:text-gold transition">VIP Packages</a></li>
+                        <li><a href="#contact" class="hover:text-gold transition">Corporate Events</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="font-bold text-gold mb-4">Contact</h4>
+                    <p class="text-gray-300 mb-2"><strong>Phone:</strong> +234 805 782 8087</p>
+                    <p class="text-gray-300 mb-4"><strong>Address:</strong> 494 Bangui St, Wuse 2, Abuja</p>
+                    <div class="flex gap-4">
+                        <a href="#" title="Facebook" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-gold hover:text-dark-brown transition">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                        <a href="#" title="Instagram" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-gold hover:text-dark-brown transition">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="https://wa.me/2348057828087" title="WhatsApp" class="w-10 h-10 rounded-full bg-white bg-opacity-10 flex items-center justify-center hover:bg-gold hover:text-dark-brown transition">
+                            <i class="fab fa-whatsapp"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-white border-opacity-20 pt-8 text-center text-gray-300">
+                <p>&copy; 2024 Jevinik Restaurant. All rights reserved. | <a href="#" class="hover:text-gold transition">Privacy Policy</a> | <a href="#" class="hover:text-gold transition">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/2348057828087?text=Hi%20Jevinik!%20I%27d%20like%20to%20learn%20more%20about%20your%20services." target="_blank" class="floating-whatsapp" title="Chat with us on WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
+
+    <script src="script.js"></script>
+</body>
+</html>

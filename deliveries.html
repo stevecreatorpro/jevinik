@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Jevinik Restaurant - Delivery Management Dashboard">
+    <meta name="author" content="Jevinik Restaurant">
+    
+    <title>Delivery Management | Jevinik Restaurant</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        :root {
+            --gold: #D4AF37;
+            --terracotta: #A0522D;
+            --brown: #3E2723;
+            --cream: #F5F1E8;
+            --dark-brown: #2C1810;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            color: var(--dark-brown);
+        }
+        
+        .brand-gold { color: var(--gold); }
+        .bg-brand-gold { background-color: var(--gold); }
+        .border-brand-gold { border-color: var(--gold); }
+        
+        .brand-brown { color: var(--brown); }
+        .bg-brand-brown { background-color: var(--brown); }
+        
+        .bg-brand-cream { background-color: var(--cream); }
+        
+        .premium-font {
+            font-family: 'Georgia', serif;
+            letter-spacing: 0.05em;
+        }
+        
+        .navbar {
+            background: linear-gradient(135deg, var(--cream), rgba(245, 241, 232, 0.95));
+            border-bottom: 2px solid var(--gold);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .nav-brand {
+            font-family: 'Georgia', serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .delivery-card {
+            background: white;
+            border-left: 5px solid var(--gold);
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+
+        .delivery-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .btn-delivered {
+            background: linear-gradient(135deg, #28a745, #20c997);
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-delivered:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 12px rgba(40, 167, 69, 0.3);
+        }
+
+        .btn-back {
+            background: var(--gold);
+            color: var(--dark-brown);
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 6px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .btn-back:hover {
+            background: var(--terracotta);
+            color: white;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 3rem;
+            color: #999;
+        }
+
+        .filter-badge {
+            display: inline-block;
+            background: var(--gold);
+            color: var(--dark-brown);
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .filter-badge.active {
+            background: var(--brown);
+            color: white;
+        }
+
+        .stats-card {
+            background: var(--cream);
+            border-left: 5px solid var(--gold);
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stats-card h3 {
+            color: var(--dark-brown);
+            font-size: 2.5rem;
+            font-weight: bold;
+            margin: 0.5rem 0;
+        }
+
+        .stats-card p {
+            color: var(--terracotta);
+            font-weight: 600;
+        }
+    </style>
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body class="bg-brand-cream">
+
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="nav-brand">
+                    <i class="fas fa-truck"></i>
+                    <span>Jevinik Deliveries</span>
+                </div>
+                <a href="index-tailwind.html" class="btn-back">
+                    <i class="fas fa-arrow-left"></i> Back to Main
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        
+        <!-- Header -->
+        <div class="mb-12">
+            <h1 class="text-4xl md:text-5xl font-bold mb-2 premium-font text-dark-brown">
+                Active Deliveries
+            </h1>
+            <p class="text-gray-600 text-lg">Manage all pending delivery orders</p>
+        </div>
+
+        <!-- Stats -->
+        <div class="grid md:grid-cols-3 gap-8 mb-12">
+            <div class="stats-card">
+                <i class="fas fa-box text-4xl brand-gold mb-2"></i>
+                <h3 id="statTotal">0</h3>
+                <p>Total Orders</p>
+            </div>
+            <div class="stats-card">
+                <i class="fas fa-hourglass-half text-4xl brand-gold mb-2"></i>
+                <h3 id="statPending">0</h3>
+                <p>Pending</p>
+            </div>
+            <div class="stats-card">
+                <i class="fas fa-money-bill-wave text-4xl brand-gold mb-2"></i>
+                <h3 id="statRevenue">₦0</h3>
+                <p>Total Revenue</p>
+            </div>
+        </div>
+
+        <!-- Sort Controls -->
+        <div class="bg-white p-6 rounded-lg mb-8 shadow-sm border-l-4 border-gold">
+            <div class="flex flex-wrap gap-3 items-center">
+                <span class="font-semibold text-dark-brown">Sort by:</span>
+                <button class="filter-badge active" onclick="setSortOrder('latest')">
+                    <i class="fas fa-arrow-down mr-1"></i> Latest First
+                </button>
+                <button class="filter-badge" onclick="setSortOrder('oldest')">
+                    <i class="fas fa-arrow-up mr-1"></i> Oldest First
+                </button>
+                <button class="filter-badge" onclick="setSortOrder('amount-high')">
+                    <i class="fas fa-sort-amount-down mr-1"></i> High Amount
+                </button>
+                <button class="filter-badge" onclick="setSortOrder('amount-low')">
+                    <i class="fas fa-sort-amount-up mr-1"></i> Low Amount
+                </button>
+            </div>
+        </div>
+
+        <!-- Deliveries List -->
+        <div id="deliveriesList" class="space-y-6">
+            <!-- Deliveries will be populated here -->
+        </div>
+
+        <!-- Empty State -->
+        <div id="emptyState" class="empty-state" style="display: none;">
+            <i class="fas fa-inbox text-6xl mb-4 opacity-30"></i>
+            <p class="text-xl">No deliveries yet</p>
+            <p class="text-gray-500 mt-2">Orders will appear here once customers place delivery requests</p>
+        </div>
+
+    </div>
+
+    <script>
+        let allDeliveries = [];
+        let currentSort = 'latest';
+
+        // Load deliveries on page load
+        document.addEventListener('DOMContentLoaded', function() {
+            loadDeliveries();
+        });
+
+        function loadDeliveries() {
+            const stored = localStorage.getItem('jevinikDeliveries');
+            allDeliveries = stored ? JSON.parse(stored) : [];
+            displayDeliveries();
+            updateStats();
+        }
+
+        function displayDeliveries() {
+            const list = document.getElementById('deliveriesList');
+            const empty = document.getElementById('emptyState');
+            
+            if (allDeliveries.length === 0) {
+                list.style.display = 'none';
+                empty.style.display = 'block';
+                return;
+            }
+
+            list.style.display = 'block';
+            empty.style.display = 'none';
+
+            // Sort deliveries
+            const sorted = sortDeliveries([...allDeliveries]);
+
+            list.innerHTML = sorted.map((delivery, index) => {
+                const date = new Date(delivery.timestamp);
+                const timeStr = date.toLocaleString('en-NG');
+                const itemsHtml = delivery.items
+                    .map(item => `<li class="text-gray-700"><i class="fas fa-check text-gold mr-2"></i>${item.name} - ₦${item.price.toLocaleString()}</li>`)
+                    .join('');
+
+                return `
+                    <div class="delivery-card p-6 rounded-lg">
+                        <div class="grid md:grid-cols-3 gap-6 mb-4">
+                            <!-- Order Info -->
+                            <div>
+                                <h3 class="text-lg font-bold text-dark-brown mb-2">
+                                    <i class="fas fa-user mr-2 text-gold"></i>${delivery.name}
+                                </h3>
+                                <p class="text-gray-600 mb-1">
+                                    <i class="fas fa-phone mr-2 text-gold"></i>${delivery.phone}
+                                </p>
+                                <p class="text-sm text-gray-500">
+                                    <i class="fas fa-clock mr-2"></i>${timeStr}
+                                </p>
+                            </div>
+
+                            <!-- Location -->
+                            <div>
+                                <h4 class="font-semibold text-dark-brown mb-2">
+                                    <i class="fas fa-map-marker-alt mr-2 text-gold"></i>Delivery Location
+                                </h4>
+                                <p class="text-gray-700 whitespace-pre-wrap">${delivery.location}</p>
+                                ${delivery.notes ? `<p class="text-sm text-gray-500 mt-2"><strong>Notes:</strong> ${delivery.notes}</p>` : ''}
+                            </div>
+
+                            <!-- Payment & Amount -->
+                            <div>
+                                <h4 class="font-semibold text-dark-brown mb-2">
+                                    <i class="fas fa-credit-card mr-2 text-gold"></i>Payment Details
+                                </h4>
+                                <p class="text-gray-700 mb-1">
+                                    Method: <strong>${delivery.paymentMethod.toUpperCase()}</strong>
+                                </p>
+                                <p class="text-2xl font-bold text-gold">
+                                    ₦${delivery.totalAmount.toLocaleString()}
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Items List -->
+                        <div class="bg-cream bg-opacity-50 p-4 rounded-lg mb-4">
+                            <h4 class="font-semibold text-dark-brown mb-3">
+                                <i class="fas fa-box mr-2 text-gold"></i>Order Items
+                            </h4>
+                            <ul class="space-y-2">
+                                ${itemsHtml}
+                            </ul>
+                        </div>
+
+                        <!-- Action Button -->
+                        <div class="flex justify-end">
+                            <button class="btn-delivered" onclick="markAsDelivered(${delivery.id})">
+                                <i class="fas fa-check mr-2"></i> Mark as Delivered
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        function sortDeliveries(deliveries) {
+            switch(currentSort) {
+                case 'oldest':
+                    return deliveries.sort((a, b) => new Date(a.timestamp) - new Date(b.timestamp));
+                case 'amount-high':
+                    return deliveries.sort((a, b) => b.totalAmount - a.totalAmount);
+                case 'amount-low':
+                    return deliveries.sort((a, b) => a.totalAmount - b.totalAmount);
+                case 'latest':
+                default:
+                    return deliveries.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+            }
+        }
+
+        function setSortOrder(order) {
+            currentSort = order;
+            
+            // Update button states
+            document.querySelectorAll('.filter-badge').forEach(btn => {
+                btn.classList.remove('active');
+            });
+            event.target.closest('.filter-badge').classList.add('active');
+            
+            displayDeliveries();
+        }
+
+        function markAsDelivered(deliveryId) {
+            if (confirm('Mark this delivery as completed and remove it from the list?')) {
+                allDeliveries = allDeliveries.filter(d => d.id !== deliveryId);
+                localStorage.setItem('jevinikDeliveries', JSON.stringify(allDeliveries));
+                
+                // Show success message
+                const btn = event.target.closest('.btn-delivered');
+                btn.innerHTML = '<i class="fas fa-check mr-2"></i> Delivery Removed!';
+                btn.style.background = '#6c757d';
+                btn.disabled = true;
+                
+                setTimeout(() => {
+                    loadDeliveries();
+                }, 1500);
+            }
+        }
+
+        function updateStats() {
+            const total = allDeliveries.length;
+            const pending = allDeliveries.filter(d => d.status === 'pending').length;
+            const revenue = allDeliveries.reduce((sum, d) => sum + d.totalAmount, 0);
+
+            document.getElementById('statTotal').textContent = total;
+            document.getElementById('statPending').textContent = pending;
+            document.getElementById('statRevenue').textContent = `₦${revenue.toLocaleString()}`;
+        }
+
+        // Refresh data every 5 seconds to show new orders
+        setInterval(loadDeliveries, 5000);
+    </script>
+
+</body>
+</html>
